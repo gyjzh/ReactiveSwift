@@ -132,6 +132,15 @@ For more details about the concepts and primitives in ReactiveSwift, check these
 1. **[Design Guidelines][]**
 
    Contracts of the ReactiveSwift primitives, Best Practices with ReactiveSwift, and Guidelines on implementing custom operators.
+   
+## Example: interactive form UI
+
+ReactiveSwift includes a _UI Examples_ playground, which demonstrates:
+
+1. how to build an interactive form UI with bindings, properties and `Action`s, with a live view in action.
+
+1. the ideal Model-View-ViewModel layering practices.
+
 
 ## Example: online search
 
