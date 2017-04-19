@@ -16,6 +16,25 @@ import Quick
 
 class SignalSpec: QuickSpec {
 	override func spec() {
+		describe("thread safety") {
+			class StateA<U, V> {}
+			class StateB<U, V> {}
+			enum SignalState<U, V> {
+				case alive(StateA<U, V>)
+				case terminating(StateB<U, V>)
+				case terminated
+			}
+
+			it("should have the same memory layout as a native pointer") {
+				let enumLayout = MemoryLayout<SignalState<Int, Error>>.self
+				let pointerLayout = MemoryLayout<UnsafeMutableRawPointer>.self
+
+				expect(enumLayout.alignment) == pointerLayout.alignment
+				expect(enumLayout.size) == pointerLayout.size
+				expect(enumLayout.stride) == pointerLayout.stride
+			}
+		}
+
 		describe("init") {
 			var testScheduler: TestScheduler!
 			
